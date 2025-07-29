@@ -957,22 +957,31 @@ public class EntityGenesisDragon extends EntityFlying implements IAetherBoss, GI
     {
 		this.worldObj.setBlock(p_70975_1_, p_70975_2_ + 1, p_70975_3_, BlocksAether.treasure_chest_breakable);
 		TileEntityTreasureChestBreakable chest = (TileEntityTreasureChestBreakable) world.getTileEntity(p_70975_1_, p_70975_2_ + 1, p_70975_3_);
-		chest.setInventorySlotContents(random.nextInt(chest.getSizeInventory()), this.getKey(random));
-		
+        if(chest != null) {
+            chest.setInventorySlotContents(random.nextInt(chest.getSizeInventory()), this.getKey(random));
+        }else{
+            this.entityDropItem(new ItemStack(ItemsAether.dungeon_key, 1, 14), 0.5F);
+        }
 		this.worldObj.setBlock(p_70975_1_ + 2, p_70975_2_ + 1, p_70975_3_, BlocksAether.elysian_chest);
 		TileEntityElysianChest chest2 = (TileEntityElysianChest) worldObj.getTileEntity(p_70975_1_ + 2, p_70975_2_ + 1, p_70975_3_);
-			chest2.setInventorySlotContents(random.nextInt(chest2.getSizeInventory()), this.getScales(random));
-		
+        if(chest2 != null) {
+            chest2.setInventorySlotContents(random.nextInt(chest2.getSizeInventory()), this.getScales(random));
+        }else{
+            this.entityDropItem(new ItemStack(ItemsAether.elysian_dragon_scales, rand.nextInt(30) + 24), 0.5F);
+        }
 		this.worldObj.setBlock(p_70975_1_ - 2, p_70975_2_ + 1, p_70975_3_, BlocksAether.elysian_chest);
 		TileEntityElysianChest chest3 = (TileEntityElysianChest) worldObj.getTileEntity(p_70975_1_ - 2, p_70975_2_ + 1, p_70975_3_);
-			chest3.setInventorySlotContents(random.nextInt(chest2.getSizeInventory()), this.getScales(random));
-		
+        if(chest2 != null) {
+            chest3.setInventorySlotContents(random.nextInt(chest2.getSizeInventory()), this.getScales(random));
+        }else{
+            this.entityDropItem(new ItemStack(ItemsAether.elysian_dragon_scales, rand.nextInt(30) + 24), 0.5F);
+        }
 		this.worldObj.setBlock(p_70975_1_, p_70975_2_, p_70975_3_, BlocksAether.reinforced_arkenium_block);
-		
-		this.worldObj.setBlock(p_70975_1_ + 2, p_70975_2_, p_70975_3_, BlocksAether.aerogel);	
-		
-		this.worldObj.setBlock(p_70975_1_ - 2, p_70975_2_, p_70975_3_, BlocksAether.aerogel);	
-		
+
+		this.worldObj.setBlock(p_70975_1_ + 2, p_70975_2_, p_70975_3_, BlocksAether.aerogel);
+
+		this.worldObj.setBlock(p_70975_1_ - 2, p_70975_2_, p_70975_3_, BlocksAether.aerogel);
+
 		this.worldObj.setBlock(p_70975_1_, p_70975_2_ - 1, p_70975_3_, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_ - 1, p_70975_2_ - 1, p_70975_3_, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_ + 1, p_70975_2_ - 1, p_70975_3_, BlocksAether.aerogel);
@@ -982,12 +991,11 @@ public class EntityGenesisDragon extends EntityFlying implements IAetherBoss, GI
 		this.worldObj.setBlock(p_70975_1_ - 1, p_70975_2_ - 1, p_70975_3_ - 1, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_ + 1, p_70975_2_ - 1, p_70975_3_ + 1, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_ + 1, p_70975_2_ - 1, p_70975_3_ - 1, BlocksAether.aerogel);
-		
+
 		this.worldObj.setBlock(p_70975_1_ - 2, p_70975_2_ - 1, p_70975_3_, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_ + 2, p_70975_2_ - 1, p_70975_3_, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_, p_70975_2_ - 1, p_70975_3_ - 2, BlocksAether.aerogel);
 		this.worldObj.setBlock(p_70975_1_, p_70975_2_ - 1, p_70975_3_ + 2, BlocksAether.aerogel);
-		
     }
     
     private ItemStack getKey(Random random) {

@@ -2,6 +2,8 @@ package com.gildedgames.the_aether;
 
 import com.gildedgames.the_aether.api.player.IPlayerAether;
 import com.gildedgames.the_aether.api.player.util.IAccessoryInventory;
+import com.gildedgames.the_aether.entities.bosses.crystal_dragon.GIEntityMultiPartTwo;
+import com.gildedgames.the_aether.entities.bosses.genesis_dragon.GIEntityMultiPart;
 import com.gildedgames.the_aether.entities.passive.mountable.EntityAerbunny;
 import com.gildedgames.the_aether.items.tools.ItemArkeniumHoe;
 import com.gildedgames.the_aether.items.tools.ItemArkeniumTool;
@@ -25,10 +27,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.*;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityCow;
@@ -77,6 +76,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class AetherEventHandler {
@@ -416,22 +416,22 @@ public class AetherEventHandler {
 				}
 			}
 		} else if (heldItem == ItemsAether.pig_slayer) {
-			String s = EntityList.getEntityString(event.target).toLowerCase();
-			if ((s.contains("pig") || s.contains("phyg") || s.contains("taegore") || event.target.getUniqueID().toString().equals("1d680bb6-2a9a-4f25-bf2f-a1af74361d69"))) {
-				if (event.target.worldObj.isRemote) {
-					for (int j = 0; j < 20; j++) {
-						Random itemRand = new Random();
-						double d = itemRand.nextGaussian() * 0.02D;
-						double d1 = itemRand.nextGaussian() * 0.02D;
-						double d2 = itemRand.nextGaussian() * 0.02D;
-						double d3 = 5D;
-						event.target.worldObj.spawnParticle("flame", (event.target.posX + (double) (itemRand.nextFloat() * event.target.width * 2.0F)) - (double) event.target.width - d * d3, (event.target.posY + (double) (itemRand.nextFloat() * event.target.height)) - d1 * d3, (event.target.posZ + (double) (itemRand.nextFloat() * event.target.width * 2.0F)) - (double) event.target.width - d2 * d3, d, d1, d2);
-					}
-				}
-			}
-		} else if (heldItem == ItemsAether.dragon_bane || heldItem == ItemsAether.tipped_dragon_bane || heldItem == ItemsAether.amplified_dragon_bane) {
-			String s = EntityList.getEntityString(event.target).toLowerCase();
-			if (s.contains("dragon")) {
+			String s = EntityList.getEntityString(event.target);
+            if (s != null && (s.toLowerCase().contains("pig") || s.toLowerCase().contains("phyg") || s.toLowerCase().contains("taegore") || event.target.getUniqueID().toString().equals("1d680bb6-2a9a-4f25-bf2f-a1af74361d69"))) {
+                if (event.target.worldObj.isRemote) {
+                    for (int j = 0; j < 20; j++) {
+                        Random itemRand = new Random();
+                        double d = itemRand.nextGaussian() * 0.02D;
+                        double d1 = itemRand.nextGaussian() * 0.02D;
+                        double d2 = itemRand.nextGaussian() * 0.02D;
+                        double d3 = 5D;
+                        event.target.worldObj.spawnParticle("flame", (event.target.posX + (double) (itemRand.nextFloat() * event.target.width * 2.0F)) - (double) event.target.width - d * d3, (event.target.posY + (double) (itemRand.nextFloat() * event.target.height)) - d1 * d3, (event.target.posZ + (double) (itemRand.nextFloat() * event.target.width * 2.0F)) - (double) event.target.width - d2 * d3, d, d1, d2);
+                    }
+                }
+            }
+        } else if (heldItem == ItemsAether.dragon_bane || heldItem == ItemsAether.tipped_dragon_bane || heldItem == ItemsAether.amplified_dragon_bane) {
+			String s = EntityList.getEntityString(event.target);
+			if (s != null && s.toLowerCase().contains("dragon")) {
 				if (event.target.worldObj.isRemote) {
 					for (int j = 0; j < 20; j++) {
 						Random itemRand = new Random();
