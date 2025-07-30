@@ -417,7 +417,7 @@ public class AetherEventHandler {
 			}
 		} else if (heldItem == ItemsAether.pig_slayer) {
 			String s = EntityList.getEntityString(event.target);
-            if (s != null && (s.toLowerCase().contains("pig") || s.toLowerCase().contains("phyg") || s.toLowerCase().contains("taegore") || event.target.getUniqueID().toString().equals("1d680bb6-2a9a-4f25-bf2f-a1af74361d69"))) {
+            if (s != null && (s.toLowerCase().contains("pig") || s.toLowerCase().contains("phyg") || s.toLowerCase().contains("taegore") || s.toLowerCase().contains("oglin") || s.toLowerCase().contains("piglin") || event.target.getUniqueID().toString().equals("1d680bb6-2a9a-4f25-bf2f-a1af74361d69"))) {
                 if (event.target.worldObj.isRemote) {
                     for (int j = 0; j < 20; j++) {
                         Random itemRand = new Random();
