@@ -147,7 +147,7 @@ public class BlockArkeniumPile extends Block
             case 4: return 6 + 3 * (4 + random.nextInt(3));//18~24
             case 5: return 8 + 4 * (5 + random.nextInt(4));//28~40
             case 6: return 12 + 5 * (6 +random.nextInt(5));//42~62
-            case 7: return 22 + 6 * (8 +random.nextInt(6));//70~100
+            case 7: return 22 + 6 * (7 +random.nextInt(7));//64~100
 
             default: return 4;
         }
