@@ -60,13 +60,15 @@ public class BlockAetherSapling extends BlockAetherFlower implements IGrowable {
         	int rand = (int)(1 + Math.random() * 4);
         	if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand == 4) {
         		world.setBlock(x, y, z, BlocksAether.skyroot_log, 0, 0);
+                if (!player.capabilities.isCreativeMode) {
+                    --stack.stackSize;
+                }
+
 				this.growTree(world, x, y, z);
 			}
         }
         
-        if (!player.capabilities.isCreativeMode) {
-			--stack.stackSize;
-		}
+
         
     	return true;
 	}
