@@ -610,7 +610,7 @@ public class AetherRegistries {
         AetherAPI.instance()
             .register(new AetherEnchantment(ItemsAether.raspberry, ItemsAether.enchanted_raspberry, 500));
         AetherAPI.instance()
-            .register(new AetherEnchantment(ItemsAether.raspberry, ItemsAether.enchanted_blackberry, 500));
+            .register(new AetherEnchantment(ItemsAether.blackberry, ItemsAether.enchanted_blackberry, 500));
         AetherAPI.instance()
             .register(new AetherEnchantment(ItemsAether.wynberry, ItemsAether.rainbow_strawberry, 800));
         AetherAPI.instance()
